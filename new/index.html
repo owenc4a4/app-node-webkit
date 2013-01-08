@@ -1,0 +1,36 @@
+<html>
+  <head>
+      
+</head>
+<body>
+<script>
+
+  var gui = require('nw.gui');
+
+  var win = gui.Window.open('test.html', { show: true });
+  win.on('loaded', function() {
+    var result = win.window.test();
+
+    if (result) {
+      document.getElementById('msg80').innerHTML = 'YES';
+    } else {
+      document.getElementById('msg80').innerHTML = 'NO';
+    }
+    //win.close();
+  });
+
+  gui.Window.get().on('close', function(){
+    win.close(true);
+    this.close(true);
+  });
+
+
+
+  
+</script>
+
+
+<span>Can remote page 80 call Node: </span>
+<span id="msg80" style="color:blue"></span>
+</body>
+</html>
