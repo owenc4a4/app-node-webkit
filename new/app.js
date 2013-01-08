@@ -7,4 +7,6 @@ exports.getMsg = function(){
 
 exports.setMsg = function(s){
   message = s;
+  var b = 0;
+  b = 2;
 }
