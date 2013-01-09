@@ -1,0 +1,6 @@
+{
+  "name": "user-agent test",
+  "main": "index.html",
+  "version": "1.0.1",
+  "user-agent": "%name/%nwver/%ver/%webkit_ver/%osinfo"
+}
