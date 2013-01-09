@@ -1,0 +1,6 @@
+{
+  "name": "nw-demo",
+  "main": "index.html",
+  "node-remote": "10.239.47.144:80",
+  "version": "1.0"
+}
