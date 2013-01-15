@@ -1,0 +1,17 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+  var gui = require('nw.gui');
+  var winmain = gui.Window.get();
+  var win1 = gui.Window.open('tt.html', {show : false});
+  var win2 = gui.Window.open('tt.html');
+  
+  winmain.on('close', function(){
+	gui.App.quit();
+  });
+</script>
+<button onclick="gui.App.quit()">click</button>
+</body>
+</html>
