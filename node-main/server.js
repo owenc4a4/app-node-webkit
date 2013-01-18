@@ -1,0 +1,1 @@
+global.cll = 10;
