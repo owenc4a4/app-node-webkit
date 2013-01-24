@@ -1,5 +1,9 @@
 {
   "name": "nw-demo",
   "main": "index.html",
-  "node-main": "server.js"
+  "version": "0.0.1",
+  "node-main": "server.js",
+  "dependencies": {
+    "jade": "*"
+  }
 }
