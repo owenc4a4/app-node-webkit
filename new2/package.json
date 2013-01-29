@@ -1,0 +1,5 @@
+{
+  "name": "nw-demo",
+  "main": "index.html",
+  "chromium-args": "--js-flags='--harmony_collections --harmony_scoping'"
+}

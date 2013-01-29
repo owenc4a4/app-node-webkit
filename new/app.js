@@ -1,12 +1,3 @@
+var gui = require('nw.gui');
 
-var message = 'ok';
-
-exports.getMsg = function(){
-  return message;
-}
-
-exports.setMsg = function(s){
-  message = s;
-  var b = 0;
-  b = 2;
-}
+  gui.Window.get(window).on('loaded', function() { console.log('a' + window.location.href); });
