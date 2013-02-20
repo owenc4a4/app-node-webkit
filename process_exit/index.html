@@ -10,11 +10,12 @@
 <body style="-webkit-user-select: none; -webkit-app-region: drag">
 <script>
   var gui = require('nw.gui');
+  var fs = require('fs');
+  
   var win = gui.Window.open('popup.html', {
-    x: 100, y: 100, width: 200, height: 300,
-    frame: false, toolbar: false
+    x: 100, y: 100, width: 200, height: 300
   });
-
+  
   win.on('closed', function() {
     console.log('popup window is closed.');
     win = null;
@@ -28,14 +29,29 @@
     console.log('new window loaded.');
   });
 
+  process.on('exit', function () {
+    process.nextTick(function () {
+     console.log('This will not run');
+    });
+    fs.openSync('a.txt', 'w');
+    console.log('This will not run');
+  });
+  
+  /*
   gui.Window.get().on('close', function() {
+    console.log('About to close.');
     if (win != null)
       win.close(true);
     this.close(true);
   });
-
+  */
+  win.close(true);
   gui.Window.get().show();
+  this.close(true);
 </script>
+<button onclick="">close</button>
+<br/>
+
 <button onclick="win.focus()">Focus</button>
 <br/>
 <button onclick="win.blur()">Blur</button>
