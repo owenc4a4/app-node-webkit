@@ -12,8 +12,19 @@
 <body style="-webkit-user-select: none; -webkit-app-region: drag">
 <script>
   var gui = require('nw.gui');
-  
+  var a1 = 'w';
+  var a2 = {error: true};
+  var c;
+  try {
+    c = JSON.stringify(a1);
+  } catch (e) {
+    
+  }
+  if (0) {
+    console.log('-1');
+  }
 
+  console.log(c);
   gui.Window.get().show();
 </script>
 

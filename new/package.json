@@ -1,7 +1,6 @@
 {
   "name": "nw-demo",
   "main": "index.html",
-  "node-main": "app.js",
   "user-agent": "%name-a-b",
   "version": "1.0"
 }

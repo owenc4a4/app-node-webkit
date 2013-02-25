@@ -5,10 +5,18 @@
 <body>
 <script>
 
-  
+var gui = require('nw.gui');
+
+function o1() {
+  gui.Window.open('test.html', {});
+}
+
+function o2() {
+  gui.Window.open('test.html', {'new-instance': true});
+}
   
 </script>
-
-
+<button onclick="o1()">click1</button>
+<button onclick="o2()">click2</button>
 </body>
 </html>

@@ -6,15 +6,41 @@
   var gui = require('nw.gui');
   gui.Window.get().showDevTools();
 
-  function a() {
-  var wnd = gui.Window.open("http://www.google.de")
-  wnd.on("loaded",function(){
-  alert("Loaded");
-  });
+  var times = 0;
+  var windows = [];
+   
+  function open_window(func) {
+    var wnd = gui.Window.open("popup.html", {show: true})
+    windows.push(wnd);
+    wnd.on("loaded",function(){
+      if (times < 9) {
+        times += 1;
+        func(func);
+        console.log(times);
+      } else {
+        console.log(times);
+      }
+    });
   }
+  
+  open_window(open_window);
+  gui.Window.get().on('close', function() {
+    gui.App.quit();
+    /*
+    console.log('in close');
+    for (i in windows) {
+      windows[i].close();
+    }
+    gui.Window.get().close(true);
+    */
+  })
+  
+  
+  
+  
 </script>
 
-<button onclick="a()">click</button>
+<button onclick="open_window(open_window)">click</button>
 
 </body>
 </html>
