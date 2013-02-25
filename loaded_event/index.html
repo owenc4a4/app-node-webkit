@@ -1,0 +1,20 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+  var gui = require('nw.gui');
+  gui.Window.get().showDevTools();
+
+  function a() {
+  var wnd = gui.Window.open("http://www.google.de")
+  wnd.on("loaded",function(){
+  alert("Loaded");
+  });
+  }
+</script>
+
+<button onclick="a()">click</button>
+
+</body>
+</html>
