@@ -1,0 +1,5 @@
+{
+  "name": "nw-demo",
+  "node-main": "m.js",
+  "main": "index.html"
+}

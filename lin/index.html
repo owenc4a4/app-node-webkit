@@ -1,0 +1,18 @@
+<html>
+<head>
+  <title> Hello World </title>
+</head>
+<body>
+<script>
+  var gui = require('nw.gui');
+  var win = gui.Window.get();
+  console.log(global.pi);
+  global.pi = 'inb';
+  console.log('url in bro', win.window.location.href);
+  process.mainModule.exports.currentWindow = win;
+  process.mainModule.exports.goo = 'oijs';
+</script>
+  <p>this is node-webkit</p>
+
+</body>
+</html>
