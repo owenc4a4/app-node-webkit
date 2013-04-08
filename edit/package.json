@@ -1,10 +1,6 @@
 {
     "name": "nw-test",
-    "main": "index.html",
     "window": {
-        "title": "Window Test",
-        "toolbar": true,
-        "show": false,
-        "frame": false
+        "frame":true 
     }
 }
