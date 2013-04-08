@@ -2,6 +2,8 @@
   "name": "nw-demo",
   "main": "index.html",
   "window": {
-	"always-on-top": true 
-	}
+	"always-on-top": true,
+    "kiosk": true
+   }
+
 }
