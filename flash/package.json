@@ -1,7 +1,6 @@
 {
   "name": "nw-test",
   "main": "index.html",
-  "node-main": "main.js",
   "webkit": {
     "plugin": true
   }
