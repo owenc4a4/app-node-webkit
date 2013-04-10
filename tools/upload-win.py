@@ -16,7 +16,9 @@ else:
 
 if sys.platform != 'cygwin':
   quit()
-  
+
+os.system('python ' + os.path.join(nw_dir, 'package_binaries.py'))
+
 sys.path.insert(0, nw_dir)
 import getnwisrelease
 import getnwversion
@@ -25,7 +27,7 @@ nw_version = 'v' + getnwversion.nw_version
 is_release = getnwisrelease.release
 
 if is_release == 0:
-  nw_version += '-pre'
+  nw_version += getnwisrelease.postfix
 
 binary_tar = 'node-webkit-' + nw_version + '-win-ia32.zip'
 require_files = ['nw.exp', 'nw.lib', 'nw.pdb']
@@ -39,7 +41,7 @@ os.chdir('forupload')
 if not os.path.isdir(nw_version):
   os.mkdir(nw_version)
 
-print 'copy files.'  
+print 'copy files.'
 import shutil
 for file in require_files:
   shutil.copy(os.path.join(nw_build_dir, file),
@@ -48,7 +50,7 @@ for file in require_files:
 shutil.copy(os.path.join(nw_build_dir, 'node-webkit-binaries', binary_tar),
               os.path.join(nw_version, binary_tar))
 
-os.system('scp -r %s owen-cloud@10.0.2.2:/home/owen-cloud/release' 
-          %(nw_version))
+os.system('scp -r %s owen-cloud@10.0.2.2:/home/owen-cloud/release'
+          % (nw_version))
 
 os.chdir(pwd_tmp)

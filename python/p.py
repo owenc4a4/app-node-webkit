@@ -2,7 +2,7 @@ import os
 import ctypes
 from ctypes import POINTER, Structure, c_wchar, c_int, sizeof, byref
 from ctypes.wintypes import BYTE, WORD, DWORD, LPWSTR, LPSTR
-  
+
 
 HICON = c_int
 LPTSTR = LPWSTR
@@ -10,7 +10,7 @@ TCHAR = c_wchar
 MAX_PATH = 260
 FCSM_ICONFILE = 0x00000010
 FCS_FORCEWRITE = 0x00000002
-SHGFI_ICONLOCATION = 0x000001000    
+SHGFI_ICONLOCATION = 0x000001000
 
 class GUID(Structure):
     _fields_ = [
@@ -43,7 +43,7 @@ class SHFILEINFO(Structure):
         ('iIcon', c_int),
         ('dwAttributes', DWORD),
         ('szDisplayName', TCHAR * MAX_PATH),
-        ('szTypeName', TCHAR * 80)]    
+        ('szTypeName', TCHAR * 80)]
 
 def seticon(folderpath, iconpath, iconindex):
     """Set folder icon.
@@ -80,4 +80,4 @@ def seticon(folderpath, iconpath, iconindex):
 
     shell32.SHUpdateImageW(sfi.szDisplayName, sfi.iIcon, 0, index)
 print 1
-seticon('d', "C:\\Windows\\system32\\SHELL32.dll", 11)   
+seticon('d', "C:\\Windows\\system32\\SHELL32.dll", 11)
