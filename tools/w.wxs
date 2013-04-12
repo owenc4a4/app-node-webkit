@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+  
+  <?define ProductName = "node-webkit" ?>
+  <?define ProductDescription = "node-webkit" ?>
+  <?define ProductAuthor = "Roger Wang and other Node contributors" ?>
+  
+  <?define RegistryKeyPath = "SOFTWARE\node-webkit" ?>
+  <?define SourceDir=".\" ?>
+  <?define RepoDir=".\" ?>
+  
+  <Product Id='*'
+           Name='$(var.ProductName)'  
+		   UpgradeCode='A6E41B94-7816-C16E-8D8F-BABD7ADD4FE5'
+           Language='1033' 
+		   Codepage='1252' 
+		   Version='1.0.0' 
+		   Manufacturer='$(var.ProductAuthor)'>
+
+    <Package InstallerVersion='200' Compressed='yes'/>
+
+    <Media Id="1" Cabinet="media1.cab" EmbedCab="yes"/>
+	
+	<MajorUpgrade AllowSameVersionUpgrades="yes"
+                  DowngradeErrorMessage="A later version of node-webkit is already installed. Setup will now exit."/>
+	
+    <Icon Id="NodeWebkitIcon" SourceFile="$(var.RepoDir)\nw.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="NodeWebkitIcon"/>
+    <Property Id="ApplicationFolderName" Value="node-webkit"/>
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR"/>	
+    
+    <Property Id="INSTALLDIR">
+      <RegistrySearch Id="InstallPathRegistry"
+                      Type="raw"
+                      Root="HKCU"
+                      Key="$(var.RegistryKeyPath)"
+                      Name="InstallPath"/>
+    </Property>
+	
+	<Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ProgramMenuDir" Name="Node Webkit"/>
+      </Directory>
+
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLDIR" Name="node-webkit">
+        </Directory>
+      </Directory>
+	  
+	  <Directory Id="DesktopFolder" Name="Desktop" />
+    </Directory>
+	
+	<DirectoryRef Id="ProgramMenuDir">
+	  <Component Id="ProgramMenuDir">		
+		<RegistryValue Root='HKCU'
+					   Key='$(var.RegistryKeyPath)'
+					   Name='InstallPath' 
+					   Type='string' 
+					   Value='[INSTALLDIR]' 
+					   KeyPath='yes' />
+		<Shortcut Id="startmenuNodeWebkit" 
+				  Name="node-webkit"
+				  Target="[INSTALLDIR]nw.exe"
+				  WorkingDirectory='INSTALLDIR'/>
+		<Shortcut Id="desktopNodeWebkit" 
+		          Directory="DesktopFolder"
+				  Name="node-webkit"
+				  Target="[INSTALLDIR]nw.exe"
+				  WorkingDirectory='INSTALLDIR'/>
+		<Shortcut Id="UninstallProduct"
+                  Name="Uninstall Node Webkit"
+                  Target="[SystemFolder]msiexec.exe"
+                  Arguments="/x [ProductCode]"/>
+		<RemoveFolder Id='ProgramMenuDir' On='uninstall' />
+	  </Component>
+	</DirectoryRef>
+	
+	<DirectoryRef Id='INSTALLDIR'>
+	  <Component Id='MainExecutable' Guid='51CEAFF3-B8BA-21DA-EE5A-6BDCEAFDA4C6'>
+		<File Id='nw.exe' KeyPath='yes' Source='$(var.SourceDir)\nw.exe'/>
+		<File Id='nw.pak' Source='$(var.SourceDir)\nw.pak'/>
+		<File Id='ffmpegsumo.dll' Source='$(var.SourceDir)\ffmpegsumo.dll'/>
+		<File Id='icudt.dll' Source='$(var.SourceDir)\icudt.dll'/>
+		<File Id='libEGL.dll' Source='$(var.SourceDir)\libEGL.dll'/>
+		<File Id='libGLESv2.dll' Source='$(var.SourceDir)\libGLESv2.dll'/>
+		<ProgId Id='node-webkit.nwfile' Description='node-webkit application' Icon='nw.exe'>
+		  <Extension Id='nw' ContentType='application/nw'>
+			<Verb Id='open' Command='Open' TargetFile='nw.exe' Argument='"%1"' />
+		  </Extension>
+		</ProgId>
+	  </Component>
+	</DirectoryRef>
+
+    <Feature Id="NodeWebkit"
+             Level="1"
+             Title="node-webkit binraries"
+             Description="Install the core node-webkit."
+             Absent="disallow">
+      <ComponentRef Id='MainExecutable' />
+      <ComponentRef Id='ProgramMenuDir' />
+    </Feature>
+
+<!--
+  <UIRef Id="WixUI_InstallDir" />
+  <UIRef Id="WixUI_ErrorProgressText" />
+  <WixVariable Id="WixUILicenseRtf" Value="$(var.SourceDir)\LICENSE.rtf"/>
+-->
+  </Product>
+</Wix>

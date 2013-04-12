@@ -80,4 +80,4 @@ def seticon(folderpath, iconpath, iconindex):
 
     shell32.SHUpdateImageW(sfi.szDisplayName, sfi.iIcon, 0, index)
 print 1
-seticon('d', "C:\\Windows\\system32\\SHELL32.dll", 11)
+seticon('d', "C:\\Windows\\system32\\SHELL32.dll", 10)
