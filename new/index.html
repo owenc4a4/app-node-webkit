@@ -7,16 +7,26 @@
 
 var gui = require('nw.gui');
 
+var w1;
 function o1() {
-  gui.Window.open('test.html', {});
+   w1 = gui.Window.open('test.html', {});
+  w1.on('minimize', function() {
+    console.log('m')
+  })
 }
 
+
 function o2() {
-  gui.Window.open('test.html', {'new-instance': true});
+  w1 = gui.Window.open('test.html', {'new-instance': true});
+  w1.on('minimize', function() {
+    console.log('m')
+  })
+  
 }
   
 </script>
 <button onclick="o1()">click1</button>
 <button onclick="o2()">click2</button>
+<button onclick="w1.minimize()">click3</button>
 </body>
 </html>

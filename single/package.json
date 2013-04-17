@@ -1,0 +1,5 @@
+{
+  "name": "nw-demo",
+  "single-instance": false,
+  "main": "index.html"
+}

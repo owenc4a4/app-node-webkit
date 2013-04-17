@@ -1,0 +1,8 @@
+{
+  "name": "nw-test",
+  "main": "index.html",
+  "webkit": {
+    "plugin": true
+  }
+  
+}

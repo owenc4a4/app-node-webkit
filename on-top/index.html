@@ -4,9 +4,10 @@
 <body>
 <script>
   var gui = require('nw.gui');
-  function newwin(){
-	var win2 = gui.Window.open('test.html', {'always-on-top': true);
-}
+  
+	gui.Window.get().on('loaded', function() {
+    console.log('main window loaded.');
+  })
 </script>
 <button onclick="newwin()">click</button>
 </body>

@@ -1,4 +1,5 @@
 *.swp
+.pyc
 .project
 *~
 \node_modules
