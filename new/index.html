@@ -15,10 +15,10 @@ function o1() {
   })
 }
 
-
+var w2;
 function o2() {
-  w1 = gui.Window.open('test.html', {'new-instance': true});
-  w1.on('minimize', function() {
+  w2 = gui.Window.open('test.html', {'new-instance': true});
+  w2.on('minimize', function() {
     console.log('m')
   })
   
