@@ -1,0 +1,20 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+  var gui = require('nw.gui');
+</script>
+<span>norml: </span><input type="file" /> <br/>
+<span>nwdirectory: </span><input type="file" nwdirectory /> <br/>
+<span>webkitdirectory: </span><input type="file" name='file' webkitdirectory nwworkingdir='E:\www' /> <br/>
+<span>webkitdirectory2: </span><input type="file" name='file' webkitdirectory /> <br/>
+<span>nwworkingdir: </span><input id="f1" type="file" nwworkingdir='C:\TEMP' /> <br/>
+
+
+<script>
+var dir_win = "C:\\Windows"
+document.getElementById('f1').nwworkingdir = dir_win;
+</script>
+</body>
+</html>
