@@ -4,11 +4,48 @@
 <body>
 <script>
   var gui = require('nw.gui');
-  
-	gui.Window.get().on('loaded', function() {
-    console.log('main window loaded.');
+  win = gui.Window.get(); 
+
+	/*
+	var net = require('net');
+	var client = net.connect({port: 9109});
+  client.setEncoding('utf8'); 
+  client.on('data', function(){
+    win.setAlwaysOnTop(true);
+    console.log('dat');
   })
+  */
+  var win2 = gui.Window.open('text.html', {show: false});
+  
+  function newwin() {
+    setTimeout(function() {
+      win.setAlwaysOnTop(true);
+      console.log('in s');
+    }, 3000);  
+  }
+  /*
+  win2.on('loaded', function(){
+    setTimeout(function() {
+      win2.setAlwaysOnTop(true)
+      win2.show();
+    }, 3000);
+  });
+  */
+  function c1 () {
+    //win2.hide();
+    setTimeout(function() {
+      win2.setAlwaysOnTop(true);
+      //win2.show();
+    }, 3000);
+  }
 </script>
 <button onclick="newwin()">click</button>
+<button onclick="win.setAlwaysOnTop(false)">false</button>
+<br><button onclick="win2.hide()">hide</button>
+<br><button onclick="win2.show()">show</button>
+<br><button onclick="win2.setAlwaysOnTop(true)">setAlwaysOnTop(ture)</button>
+<br><button onclick="win2.setAlwaysOnTop(false)">setAlwaysOnTop(false)</button>
+<br><button onclick="win.setAlwaysOnTop(false)">win(false)</button>
+<br><button onclick="c1()">c1</button>
 </body>
 </html>

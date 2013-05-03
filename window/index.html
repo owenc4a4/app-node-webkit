@@ -37,7 +37,7 @@
 
   //gui.Window.get().show();
 </script>
-<button onclick="win.focus()">Focus</button>
+<button onclick="setTimeout(function(){win.focus()},3000)">Focus</button>
 <br/>
 <button onclick="win.blur()">Blur</button>
 <br/>
@@ -78,7 +78,7 @@
 <button onclick="win.setResizable(true)">setResizable(true)</button>
 <button onclick="win.setResizable(false)">(false)</button>
 <br/>
-<button onclick="win.setAlwaysOnTop(true)">setAlwaysOnTop(true)</button>
+<button onclick="setTimeout(function(){win.setAlwaysOnTop(true);},2000);">setAlwaysOnTop(true)</button>
 <button onclick="win.setAlwaysOnTop(false)">(false)</button>
 <br/>
 <button onclick="win.zoomLevel = 2">set zoomLevel to 2</button>

@@ -1,0 +1,38 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+  var gui = require('nw.gui');
+//socket server
+
+  var net = require('net');
+
+  var server = net.createServer();
+  server.listen(9109);
+  server.on('listening', function(){
+
+    console.log('le');
+
+  });
+  var s;
+  server.on('connection', cb = function(socket){
+  
+    socket.setEncoding('utf8');
+    console.log('in app connect');
+    s = socket;
+    s.on('data', function(){
+      console.log('set data');
+    })
+  }); //server.on()
+  
+  function send() {
+    setTimeout(function() {
+      s.write('w');
+      console.log('in s');
+    }, 3000);  
+  }
+</script>
+<button onclick="send()">send</button>
+</body>
+</html>
