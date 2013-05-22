@@ -12,7 +12,7 @@
   var gui = require('nw.gui');
   var win = gui.Window.open('popup.html', {
     x: 100, y: 100, width: 200, height: 300,
-    frame: false, toolbar: false, show: false
+    frame: false, toolbar: true, show: false
   });
 
   win.on('closed', function() {
@@ -26,7 +26,7 @@
 
   win.on('loaded', function() {
     console.log('new window loaded.');
-    win.minimize();
+    //win.minimize();
   });
 
   gui.Window.get().on('close', function() {

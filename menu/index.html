@@ -1,0 +1,25 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var gui = require('nw.gui');
+
+var menu = new gui.Menu();
+menu.append(new gui.MenuItem({
+  label: 'Item 1',
+  click: function() {
+    console.log('Click on Item 1');
+  }
+}));
+var submenu = new gui.Menu();
+submenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Sub 1', checked: true, enabled: false }));
+submenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Sub 2', checked: true, enabled: false }));
+submenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Sub 3', checked: true, enabled: false }));
+submenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Sub 4', checked: true, enabled: false }));
+
+</script>
+<button onclick='menu.popup(20, 30)'>menu</button>
+<button onclick='menu.popup(200, 300)'>menu2</button>
+</body>
+</html>

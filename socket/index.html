@@ -1,0 +1,72 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+  var gui = require('nw.gui');
+  var spawn = require('child_process').spawn;
+  var net = require('net');
+  var cb;
+  
+  var server = net.createServer();
+  server.listen(9111);
+  
+  server.on('listening', function(){
+    // Run!
+    server.on('connection', cb = function(socket){
+      socket.setEncoding('utf8');
+      console.log('in app connect');
+      
+      
+      socket.on('data', function(data) {
+        console.log('data');       
+      });
+      
+      socket.on('end', function() {
+        console.log ('end.');
+        server.removeListener('connection', cb); 
+        try {
+          console.log('sec');
+          server.removeListener('connection', cb); 
+        } catch (e) {
+          console.log('s');
+        }
+      });
+      
+    }); //server.on()
+    
+    server.on('connection', function(socket){
+      socket.setEncoding('utf8');
+      console.log('in app connect ver2 ');
+      
+      
+      socket.on('data', function(data) {
+        console.log('data 2');       
+      });
+      
+      socket.on('end', function() {
+        console.log ('end 2.');
+      });
+      
+    }); //server.on() 
+    
+  });
+
+  server.on('error', function(e){
+    console.log(e);
+    if (e.code == 'EADDRINUSE'){
+      console.log('Port in use, retrying new..');
+      server.close();
+    }
+  });
+  
+  var win = gui.Window.get();
+  
+  function newc() {
+    app = spawn(process.execPath, ['client']);
+  }
+</script>
+
+<button onclick="newc()">click</button>
+</body>
+</html>

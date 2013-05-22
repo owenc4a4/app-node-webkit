@@ -1,0 +1,13 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+  var gui = require('nw.gui');
+  var net = require('net');
+  var client = net.connect({port: 9111}, function() {
+    client.write('good');
+  });
+</script>
+</body>
+</html>
