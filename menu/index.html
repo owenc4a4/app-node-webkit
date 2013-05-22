@@ -19,7 +19,7 @@ submenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Sub 3', checked: tru
 submenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Sub 4', checked: true, enabled: false }));
 
 </script>
-<button onclick='menu.popup(20, 30)'>menu</button>
-<button onclick='menu.popup(200, 300)'>menu2</button>
+<button onclick='menu.popup(20, 30);submenu.popup(200, 200)'>menu</button>
+<button onclick='submenu.popup(200, 200)'>menu2</button>
 </body>
 </html>
