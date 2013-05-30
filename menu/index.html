@@ -3,6 +3,7 @@
 </head>
 <body>
 <script>
+
 var gui = require('nw.gui');
 
 var menu = new gui.Menu();
@@ -12,14 +13,15 @@ menu.append(new gui.MenuItem({
     console.log('Click on Item 1');
   }
 }));
-var submenu = new gui.Menu();
-submenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Sub 1', checked: true, enabled: false }));
-submenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Sub 2', checked: true, enabled: false }));
-submenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Sub 3', checked: true, enabled: false }));
-submenu.append(new gui.MenuItem({ type: 'checkbox', label: 'Sub 4', checked: true, enabled: false }));
+
+console.log(20);
+document.addEventListener("contextmenu",function(e){
+  e.preventDefault();
+  menu.popup(20, 30);
+  console.log(10);
+  return false;
+  },false);
 
 </script>
-<button onclick='menu.popup(20, 30);submenu.popup(200, 200)'>menu</button>
-<button onclick='submenu.popup(200, 200)'>menu2</button>
 </body>
 </html>
